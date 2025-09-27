@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sage Blueprint - Your Home for Life, Beautifully Designed</title>
+    <meta name="description" content="Beautiful, safe, smart design for independent living. Connect with certified SAGES professionals for aging in place home modifications.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="resources/favicon.png">
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    
+    <style>
+        /* CSS Variables for Design System - Updated with New Brand Colors */
+        :root {
+            --sage-dark: #2B3210;
+            --sage-medium: #87a96b;
+            --warm-white: #FFFFFF;
+            --sage-cream: #bcc482;
+            --sage-gold: #D4AF37;
+            --text-blue-black: #2B3210;
+            
+            --font-primary: 'Open Sans', sans-serif;
+            --font-secondary: 'Lato', sans-serif;
+            
+            --border-radius: 12px;
+            --shadow: 0 4px 20px rgba(43, 50, 16, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background-color: var(--warm-white);
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { 
+            font-size: 3rem; 
+            font-weight: 700;
+            color: var(--sage-dark);
+            font-family: var(--font-primary);
+        }
+
+        h2 { 
+            font-size: 2.25rem; 
+            color: var(--sage-medium);
+            font-family: var(--font-primary);
+        }
+
+        h3 { 
+            font-size: 1.5rem; 
+            font-family: var(--font-secondary);
+            font-weight: 500;
+            color: var(--sage-medium);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-weight: 400;
+            color: var(--text-blue-black);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(254, 254, 254, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(80, 86, 49, 0.1);
+        }
+
+        .navbar.nav-hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 400;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--sage-orange);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--sage-orange);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-secondary);
+        }
+
+        .btn-primary {
+            background: var(--sage-gold);
+            color: var(--warm-white);
+        }
+
+        .btn-primary:hover {
+            background: #c19b2e;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-blue-black);
+            border: 2px solid var(--sage-gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--sage-gold);
+            color: var(--warm-white);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--sage-cream) 0%, var(--warm-white) 100%);
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('resources/hero-home.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            opacity: 0;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Value Propositions */
+        .value-section {
+            padding: 1.5rem 0;
+            background: var(--warm-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--charcoal);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .value-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: var(--warm-white);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(44, 44, 44, 0.15);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--sage-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--warm-white);
+        }
+
+        .value-card h3 {
+            color: var(--sage-medium);
+            margin-bottom: 1rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 1.5rem 0;
+            background: var(--soft-cream);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--sage-orange);
+            color: var(--warm-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step h3 {
+            color: var(--sage-medium);
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 1.5rem 0;
+            background: var(--warm-white);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.25rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
+        }
+
+        .testimonial-author {
+            font-weight: 500;
+            color: var(--sage-medium);
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            opacity: 0.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 1rem 0;
+            background: linear-gradient(135deg, var(--sage-medium) 0%, var(--sage-dark) 100%);
+            color: var(--warm-white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--warm-white);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons .btn {
+            background: var(--sage-orange);
+            color: var(--warm-white);
+        }
+
+        .cta-buttons .btn:hover {
+            background: #b8941f;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--sage-dark);
+            color: var(--warm-white);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--sage-orange);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--sage-orange);
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.25rem; }
+            h2 { font-size: 1.75rem; }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-cta,
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .value-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-4 { margin-bottom: 2rem; }
+        .mt-4 { margin-top: 2rem; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo"><img src="resources/logo.png" alt="The SAGE Blueprint"></a>
+            <ul class="nav-menu">
+                <li><a href="about.html">ABOUT AGING IN PLACE</a></li>
+                <li><a href="about.html#resources">RESOURCES</a></li>
+                <li><a href="book.html">THE BOOK</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="find-sage.html" class="btn btn-primary">FIND YOUR SAGE</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Your Home for Life, Beautifully Designed</h1>
+                <p class="hero-subtitle">Beautiful, safe, smart design for independent living. Connect with certified SAGES professionals who understand that accessibility and style go hand in hand.</p>
+                <div class="hero-cta">
+                    <a href="find-sage.html" class="btn btn-primary">FIND YOUR SAGE</a>
+                    <a href="book.html" class="btn btn-secondary">BUY THE BOOK</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="resources/hero-home.jpg" alt="Beautiful aging in place home design">
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Propositions -->
+    <section class="value-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose The Sage Blueprint?</h2>
+                <p class="section-subtitle">We believe that aging in place shouldn't mean compromising on beauty, style, or comfort. Our certified SAGES professionals create homes that are both stunning and safe.</p>
+            </div>
+            <div class="value-cards">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 5L8 15V35H32V15L20 5Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M16 35V20H24V35" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Beautiful Design</h3>
+                    <p>Accessibility features that enhance rather than detract from your home's aesthetic. Our SAGES create spaces that look like high-end design magazines, not medical facilities.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 8C16.6863 8 14 10.6863 14 14C14 17.3137 16.6863 20 20 20C23.3137 20 26 17.3137 26 14C26 10.6863 23.3137 8 20 8Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M8 32C8 26.4772 12.4772 22 18 22H22C27.5228 22 32 26.4772 32 32" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M28 8C31.3137 8 34 10.6863 34 14C34 17.3137 31.3137 20 28 20" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M32 32C32 26.4772 27.5228 22 22 22" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Expert Guidance</h3>
+                    <p>Work with certified SAGES (Specialists in Adaptive, Graceful Elder Spaces) who understand both form and function. Our professionals are trained in universal design principles.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 8C16.6863 8 14 10.6863 14 14C14 17.3137 16.6863 20 20 20C23.3137 20 26 17.3137 26 14C26 10.6863 23.3137 8 20 8Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M12 32L12 20L28 20L28 32" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M16 32L16 24L24 24L24 32" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M8 8L12 12" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M32 8L28 12" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Home Independence</h3>
+                    <p>Stay in the home you love forever. Our modifications ensure you can age safely and comfortably while maintaining your independence and dignity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Simple steps to transform your home for lifelong living</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Learn About Aging in Place</h3>
+                    <p>Explore our educational resources to understand what aging in place design can do for your home and quality of life.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Find Your Certified Sage</h3>
+                    <p>Search our directory of certified professionals in your area. Review their portfolios and specialties to find the perfect match.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Transform Your Home Beautifully</h3>
+                    <p>Work with your Sage to create a customized plan that enhances both the beauty and accessibility of your home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Clients Say</h2>
+            </div>
+            <div class="testimonial-slider">
+                <div class="splide">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <div class="testimonial">
+                                    <p class="testimonial-text">"The Sage Blueprint transformed our bathroom into a spa-like retreat that happens to be perfectly accessible. Our friends can't believe it's an 'aging in place' design - it's just beautiful."</p>
+                                    <div class="testimonial-author">Margaret Thompson</div>
+                                    <div class="testimonial-role">Homeowner, Portland, OR</div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="testimonial">
+                                    <p class="testimonial-text">"As a designer, becoming a certified Sage has opened up a whole new market for me. The training was comprehensive, and the support system is incredible."</p>
+                                    <div class="testimonial-author">David Kim</div>
+                                    <div class="testimonial-role">Certified Sage Designer</div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="testimonial">
+                                    <p class="testimonial-text">"The book is a game-changer. It helped us understand what was possible and gave us the confidence to move forward with our home modifications."</p>
+                                    <div class="testimonial-author">Robert & Linda Chen</div>
+                                    <div class="testimonial-role">Book Readers</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Home?</h2>
+            <p>Join thousands of homeowners who have discovered that aging in place can be beautiful, safe, and empowering.</p>
+            <div class="cta-buttons">
+                <a href="find-sage.html" class="btn">FIND YOUR SAGE</a>
+                <a href="book.html" class="btn">GET THE BOOK</a>
+                <a href="about.html" class="btn">LEARN MORE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="become-sage.html">BECOME A SAGE</a>
+            </div>
+            <p>&copy; 2024 The Sage Blueprint. All rights reserved. Empowering beautiful, safe, independent living.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+    <script>
+        // Initialize testimonial slider
+        document.addEventListener('DOMContentLoaded', function() {
+            new Splide('.splide', {
+                type: 'loop',
+                autoplay: true,
+                interval: 5000,
+                arrows: false,
+                pagin

@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Aging in Place Design - The Sage Blueprint</title>
+    <meta name="description" content="Learn about aging in place design principles, universal design, and how to create beautiful, accessible homes for lifelong living.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tiempos+Headline:wght@400;500;700&family=Suisse+Int'l:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="resources/favicon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base styles - Updated with SAGE Blueprint Branding */
+        :root {
+            --sage-dark: #2B3210;
+            --sage-medium: #505631;
+            --warm-white: #FFFFFF;
+            --sage-cream: #E5E2D9;
+            --sage-orange: #D4AF37;
+            
+            --font-primary: 'Open Sans', sans-serif;
+            --font-secondary: 'Lato', sans-serif;
+            
+            --border-radius: 12px;
+            --shadow: 0 4px 20px rgba(43, 50, 16, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background-color: var(--warm-white);
+            padding-top: 80px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { 
+            font-size: 2.5rem; 
+            font-weight: 700;
+            color: var(--sage-dark);
+            font-family: var(--font-primary);
+        }
+
+        h2 { 
+            font-size: 2rem; 
+            color: var(--sage-medium);
+            font-family: var(--font-primary);
+            font-weight: 600;
+        }
+
+        h3 { 
+            font-size: 1.5rem; 
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--sage-medium);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(254, 254, 254, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(80, 86, 49, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 400;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--sage-orange);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-secondary);
+        }
+
+        .btn-primary {
+            background: var(--sage-orange);
+            color: var(--warm-white);
+        }
+
+        .btn-primary:hover {
+            background: #c46220;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--sage-medium);
+            border: 2px solid var(--sage-medium);
+        }
+
+        .btn-secondary:hover {
+            background: var(--sage-medium);
+            color: var(--warm-white);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--sage-cream) 0%, var(--warm-white) 100%);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--warm-beige);
+        }
+
+        .content-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--charcoal);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+
+        .content-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .content-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* Statistics Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: var(--warm-white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--sage-orange);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+
+        /* Principles Grid */
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .principle-card {
+            background: var(--warm-white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .principle-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(44, 44, 44, 0.15);
+        }
+
+        .principle-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--sage-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: var(--warm-white);
+        }
+
+        .principle-card h3 {
+            color: var(--sage-green);
+            margin-bottom: 1rem;
+        }
+
+        /* Room Considerations */
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .room-card {
+            background: var(--warm-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .room-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(44, 44, 44, 0.15);
+        }
+
+        .room-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .room-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .room-content {
+            padding: 1.5rem;
+        }
+
+        .room-card h3 {
+            color: var(--sage-green);
+            margin-bottom: 1rem;
+        }
+
+        /* Assessment Tool */
+        .assessment-section {
+            padding: 4rem 0;
+            background: var(--soft-cream);
+        }
+
+        .assessment-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--warm-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+        }
+
+        /* Resources Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .resource-card {
+            background: var(--warm-white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(44, 44, 44, 0.15);
+        }
+
+        .resource-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--muted-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--charcoal);
+        }
+
+        .resource-card h3 {
+            color: var(--sage-green);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--sage-dark);
+            color: var(--warm-white);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .principles-grid,
+            .room-grid,
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><img src="resources/logo.png" alt="The SAGE Blueprint"></a>
+            <ul class="nav-menu">
+                <li><a href="about.html" class="active">ABOUT AGING IN PLACE</a></li>
+                <li><a href="about.html#resources">RESOURCES</a></li>
+                <li><a href="book.html">THE BOOK</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="find-sage.html" class="btn btn-primary">FIND YOUR SAGE</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Understanding Aging in Place Design</h1>
+                <p class="hero-subtitle">Creating beautiful, safe, functional homes that adapt to your changing needs while maintaining style and comfort for life.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Aging in Place -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What is Aging in Place?</h2>
+                <p class="section-subtitle">The choice to remain in your own home safely, independently, and comfortably, regardless of age or ability level</p>
+            </div>
+            <div class="two-column">
+                <div class="content-text">
+                    <h3>A Growing Movement</h3>
+                    <p>Aging in place represents a fundamental shift in how we think about our homes and our futures. Rather than accepting that aging means moving to assisted living facilities or nursing homes, more Americans are choosing to modify their existing homes to support their changing needs.</p>
+                    <p>This movement is driven by both emotional and practical considerations. Our homes contain our memories, our communities, and our sense of identity. They're where we feel most comfortable and connected. The financial implications are significant too - modifying an existing home is often far more cost-effective than moving to institutional care.</p>
+                    <p>But aging in place isn't just about adding grab bars and ramps. It's about thoughtful design that anticipates and adapts to changing needs while maintaining the beauty, style, and personality that make a house feel like home.</p>
+                </div>
+                <div class="content-image">
+                    <img src="resources/hero-home.jpg" alt="Beautiful aging in place home design">
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">90%</span>
+                    <span class="stat-label">Of adults 65+ want to age at home</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">10,000</span>
+                    <span class="stat-label">Americans turn 65 every day</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">$427B</span>
+                    <span class="stat-label">Aging in place market by 2030</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">75%</span>
+                    <span class="stat-label">Lower cost than assisted living</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Universal Design Principles -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Universal Design Principles</h2>
+                <p class="section-subtitle">Creating spaces that work for everyone, regardless of age, size, or ability</p>
+            </div>
+            <div class="two-column">
+                <div class="content-image">
+                    <img src="resources/bathroom-design.jpg" alt="Universal design bathroom">
+                </div>
+                <div class="content-text">
+                    <h3>Beyond Accessibility</h3>
+                    <p>Universal design goes beyond basic accessibility requirements to create spaces that are inherently usable by all people, to the greatest extent possible, without the need for adaptation or specialized design.</p>
+                    <p>The beauty of universal design lies in its invisibility. When done well, these features enhance the experience for everyone while providing essential support for those who need it. A curbless shower isn't just accessible - it's elegant, spa-like, and easier to clean for everyone.</p>
+                    <p>This approach represents a shift from reactive modifications (adding features when needed) to proactive design (incorporating universal principles from the start). The result is homes that are not only safer and more functional but also more valuable and marketable.</p>
+                </div>
+            </div>
+            
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="principle-icon">👁️</div>
+                    <h3>Equitable Use</h3>
+                    <p>Design that is useful and marketable to people with diverse abilities. Features should be appealing and functional for everyone.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-icon">🔄</div>
+                    <h3>Flexibility in Use</h3>
+                    <p>Accommodating a wide range of individual preferences and abilities. Design that adapts to different users and uses.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-icon">⚡</div>
+                    <h3>Simple and Intuitive</h3>
+                    <p>Easy to understand, regardless of experience, knowledge, language skills, or concentration level.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-icon">📖</div>
+                    <h3>Perceptible Information</h3>
+                    <p>Communicating necessary information effectively, regardless of sensory abilities or ambient conditions.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-icon">⚠️</div>
+                    <h3>Tolerance for Error</h3>
+                    <p>Minimizing hazards and the adverse consequences of accidental or unintended actions.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-icon">💪</div>
+                    <h3>Low Physical Effort</h3>
+                    <p>Efficient, comfortable, and with a minimum of fatigue. Design that works with human capabilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Room-by-Room Considerations -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Room-by-Room Design Considerations</h2>
+                <p class="section-subtitle">Practical applications of aging in place design throughout your home</p>
+            </div>
+            <div class="room-grid">
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="resources/bathroom-design.jpg" alt="Accessible bathroom design">
+                    </div>
+                    <div class="room-content">
+                        <h3>Bathrooms</h3>
+                        <p>The highest-risk area for falls deserves special attention. Key considerations include:</p>
+                        <ul>
+                            <li>Curbless, walk-in showers with built-in seating</li>
+                            <li>Comfort-height toilets (17-19 inches)</li>
+                            <li>Elegant grab bars that double as towel racks</li>
+                            <li>Non-slip flooring with style</li>
+                            <li>Excellent lighting and ventilation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="resources/kitchen-design.jpg" alt="Accessible kitchen design">
+                    </div>
+                    <div class="room-content">
+                        <h3>Kitchens</h3>
+                        <p>The heart of the home should be both beautiful and functional for all users:</p>
+                        <ul>
+                            <li>Varied counter heights for different tasks</li>
+                            <li>Pull-out shelves and drawers</li>
+                            <li>Lever-style handles and touchless faucets</li>
+                            <li>Excellent task and ambient lighting</li>
+                            <li>Clear pathways and turning space</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="resources/bedroom-design.jpg" alt="Accessible bedroom design">
+                    </div>
+                    <div class="room-content">
+                        <h3>Bedrooms</h3>
+                        <p>Creating a sanctuary that supports rest and safety:</p>
+                        <ul>
+                            <li>Adjustable bed at optimal height (20-23 inches)</li>
+                            <li>Clear pathways to bathroom</li>
+                            <li>Motion-activated lighting</li>
+                            <li>Accessible closet organization</li>
+                            <li>Emergency communication systems</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="resources/hero-home.jpg" alt="Accessible living areas">
+                    </div>
+                    <div class="room-content">
+                        <h3>Living Areas</h3>
+                        <p>Comfortable gathering spaces that work for everyone:</p>
+                        <ul>
+                            <li>Open floor plans with clear pathways</li>
+                            <li>Stable, appropriately-sized furniture</li>
+                            <li>Multiple lighting levels and sources</li>
+                            <li>Non-slip, easy-maintenance flooring</li>
+                            <li>Comfortable seating with good support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Home Assessment Tool -->
+    <section class="assessment-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Is Your Home Ready?</h2>
+                <p class="section-subtitle">Take our comprehensive assessment to understand your home's current readiness for aging in place</p>
+            </div>
+            <div class="assessment-container">
+                <div id="assessment-quiz">
+                    <!-- Quiz content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources and Next Steps -->
+    <section id="resources" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Resources & Next Steps</h2>
+                <p class="section-subtitle">Tools and guidance to help you plan your aging in place journey</p>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">📋</div>
+                    <h3>Home Assessment Checklist</h3>
+                    <p>Comprehensive room-by-room evaluation tool to identify modification opportunities and priorities.</p>
+                    <button class="btn btn-primary" onclick="downloadChecklist()">DOWNLOAD CHECKLIST</button>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="35" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M25 45L35 35L45 45L55 35" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M30 55L30 45L50 45L50 55" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="40" cy="25" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Cost Estimator</h3>
+                    <p>Get realistic budget expectations for different types of aging in place modifications and projects.</p>
+                    <button class="btn btn-primary" onclick="showCostEstimator()">CALCULATE COSTS</button>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">📚</div>
+                    <h3>The Sage Blueprint Book</h3>
+                    <p>Complete guide to beautiful aging in place design with practical examples and expert advice.</p>
+                    <a href="book.html" class="btn btn-primary">GET THE BOOK</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="35" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M30 25C30 20.5817 33.5817 17 38 17C42.4183 17 46 20.5817 46 25C46 29.4183 42.4183 33 38 33C33.5817 33 30 29.4183 30 25Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M24 55C24 49.4772 28.4772 45 34 45H42C47.5228 45 52 49.4772 52 55" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M48 25C48 20.5817 51.5817 17 56 17C60.4183 17 64 20.5817 64 25C64 29.4183 60.4183 33 56 33" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M52 55C52 49.4772 47.5228 45 42 45" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Find a Certified Sage</h3>
+                    <p>Connect with professionals trained in beautiful aging in place design in your area.</p>
+                    <a href="find-sage.html" class="btn btn-primary">FIND YOUR SAGE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="become-sage.html">BECOME A SAGE</a>
+            </div>
+            <p>&copy; 2024 The Sage Blueprint. All rights reserved. Empowering beautiful, safe, independent living.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+    <script>
+        function downloadChecklist() {
+            alert('Your Home Assessment Checklist is ready for download! This would trigger a PDF download in a real implementation.');
+        }
+        
+        function showCostEstimator() {
+            alert('Cost Estimator would open here, helping you understand budget ranges for different modifications.');
+        }
+    </script>
+</body>
+</html>uld update pricing based on selected options
+            console.log('Price up

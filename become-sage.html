@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Certified Sage - Professional Training Program</title>
+    <meta name="description" content="Join the exclusive network of certified SAGES professionals. Get trained in beautiful aging in place design and grow your business with our proven methodology.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="resources/favicon.png">
+    
+    <style>
+        /* Base styles - Updated with SAGE Blueprint Branding */
+        :root {
+            --sage-dark: #2B3210;
+            --sage-medium: #505631;
+            --warm-white: #FFFFFF;
+            --sage-cream: #E5E2D9;
+            --sage-orange: #D4AF37;
+            
+            --font-primary: 'Open Sans', sans-serif;
+            --font-secondary: 'Lato', sans-serif;
+            
+            --border-radius: 12px;
+            --shadow: 0 4px 20px rgba(43, 50, 16, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background-color: var(--warm-white);
+            padding-top: 80px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { 
+            font-size: 2.5rem; 
+            font-weight: 700;
+            color: var(--sage-dark);
+            font-family: var(--font-primary);
+        }
+
+        h2 { 
+            font-size: 2rem; 
+            color: var(--sage-medium);
+            font-family: var(--font-primary);
+            font-weight: 600;
+        }
+
+        h3 { 
+            font-size: 1.5rem; 
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--sage-medium);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(254, 254, 254, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(156, 175, 136, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 400;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--sage-green);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-secondary);
+        }
+
+        .btn-primary {
+            background: var(--sage-orange);
+            color: var(--warm-white);
+        }
+
+        .btn-primary:hover {
+            background: #c46220;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--sage-medium);
+            border: 2px solid var(--sage-medium);
+        }
+
+        .btn-secondary:hover {
+            background: var(--sage-medium);
+            color: var(--warm-white);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--sage-cream) 0%, var(--warm-white) 100%);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--sage-orange);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--charcoal);
+            opacity: 0.8;
+        }
+
+        /* Value Propositions */
+        .value-section {
+            padding: 4rem 0;
+            background: var(--warm-white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--charcoal);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: var(--warm-white);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(44, 44, 44, 0.15);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--sage-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--warm-white);
+        }
+
+        .value-card h3 {
+            color: var(--sage-medium);
+            margin-bottom: 1rem;
+        }
+
+        /* Curriculum Section */
+        .curriculum-section {
+            padding: 4rem 0;
+            background: var(--soft-cream);
+        }
+
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .curriculum-module {
+            background: var(--warm-white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .module-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .module-number {
+            width: 40px;
+            height: 40px;
+            background: var(--sage-green);
+            color: var(--warm-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .curriculum-module h3 {
+            color: var(--sage-medium);
+            margin-bottom: 1rem;
+        }
+
+        .module-topics {
+            list-style: none;
+        }
+
+        .module-topics li {
+            padding: 0.25rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .module-topics li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--sage-green);
+            font-weight: bold;
+        }
+
+        /* Certification Levels */
+        .levels-section {
+            padding: 4rem 0;
+            background: var(--warm-white);
+        }
+
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .level-card {
+            background: var(--warm-white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .level-card:hover {
+            border-color: var(--sage-green);
+            transform: translateY(-3px);
+        }
+
+        .level-badge {
+            width: 100px;
+            height: 100px;
+            background: var(--sage-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: var(--warm-white);
+            font-weight: bold;
+        }
+
+        .level-card h3 {
+            color: var(--sage-medium);
+            margin-bottom: 1rem;
+        }
+
+        .level-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .level-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .level-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--warm-beige);
+        }
+
+        .level-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* Application Form */
+        .application-section {
+            padding: 4rem 0;
+            background: var(--soft-cream);
+        }
+
+        .application-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--warm-white);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .step-indicator {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-indicator::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background: var(--warm-beige);
+            z-index: 1;
+        }
+
+        .step-indicator:last-child::after {
+            display: none;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--sage-cream);
+            color: var(--sage-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-indicator.active .step-circle {
+            background: var(--sage-orange);
+            color: var(--warm-white);
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--warm-beige);
+            border-radius: var(--border-radius);
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--sage-orange);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--warm-beige);
+            border-radius: 2px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--sage-orange);
+            transition: var(--transition);
+            width: 25%;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 0;
+            background: var(--warm-white);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--warm-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: var(--soft-cream);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-answer.active {
+            padding: 1.5rem;
+            max-height: 200px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--sage-dark);
+            color: var(--warm-white);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .value-grid,
+            .curriculum-grid,
+            .levels-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .application-form {
+                padding: 2rem;
+            }
+            
+            .form-steps {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .step-indicator::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><img src="resources/logo.png" alt="The SAGE Blueprint"></a>
+            <ul class="nav-menu">
+                <li><a href="about.html">ABOUT AGING IN PLACE</a></li>
+                <li><a href="about.html#resources">RESOURCES</a></li>
+                <li><a href="book.html">THE BOOK</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="find-sage.html" class="btn btn-primary">FIND YOUR SAGE</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Become a Certified Sage</h1>
+                <p class="hero-subtitle">Join the exclusive network of professionals transforming the aging in place industry with beautiful, accessible design solutions.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">$427B</span>
+                        <span class="stat-label">Aging in place market by 2030</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">73%</span>
+                        <span class="stat-label">Of adults want to age at home</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">15%</span>
+                        <span class="stat-label">Average project value increase</span>
+                    </div>
+                </div>
+                <a href="#application" class="btn btn-primary">Start Your Application</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Become a Sage -->
+    <section class="value-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Become a Certified Sage?</h2>
+                <p class="section-subtitle">Position yourself as the expert in one of the fastest-growing segments of the design industry</p>
+            </div>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="35" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M20 60L30 50L40 55L50 45L60 55" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M25 45L35 35L45 40L55 30L65 40" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="40" cy="25" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Growing Market Opportunity</h3>
+                    <p>The aging in place market is exploding. With 10,000 Americans turning 65 every day, demand for certified professionals has never been higher.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="35" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M40 20L45 30L55 30L47 37L50 47L40 42L30 47L33 37L25 30L35 30L40 20Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Differentiate Your Services</h3>
+                    <p>Stand out from competitors with exclusive certification and proprietary methodology that clients trust and value.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="35" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M25 35L35 25L45 35L55 25L50 45L30 50L25 35Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="40" cy="30" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Proven Methodology</h3>
+                    <p>Access our comprehensive training system, tools, and resources developed over 15 years of successful projects.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="35" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M25 35C25 30.5817 28.5817 27 33 27C37.4183 27 41 30.5817 41 35C41 39.4183 37.4183 43 33 43C28.5817 43 25 39.4183 25 35Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M47 35C47 30.5817 50.5817 27 55 27C59.4183 27 63 30.5817 63 35C63 39.4183 59.4183 43 55 43C50.5817 43 47 39.4183 47 35Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M41 35L47 35" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Marketing Support</h3>
+                    <p>Get listed in our exclusive directory, receive marketing materials, and benefit from our brand recognition and referral network.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="35" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M25 35C25 30.5817 28.5817 27 33 27C37.4183 27 41 30.5817 41 35C41 39.4183 37.4183 43 33 43C28.5817 43 25 39.4183 25 35Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M30 55C30 49.4772 34.4772 45 40 45H46C51.5228 45 56 49.4772 56 55" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M47 35C47 30.5817 50.5817 27 55 27C59.4183 27 63 30.5817 63 35C63 39.4183 59.4183 43 55 43C50.5817 43 47 39.4183 47 35Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M52 55C52 49.4772 47.5228 45 42 45" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Professional Community</h3>
+                    <p>Join an exclusive network of like-minded professionals for collaboration, support, and ongoing education.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="35" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M25 35L35 25L45 35L55 25L50 45L30 50L25 35Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M30 30L50 30" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M35 25L35 35" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M45 25L45 35" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Recurring Revenue</h3>
+                    <p>Build a sustainable business with higher project values and ongoing consultation opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Comprehensive Training Curriculum</h2>
+                <p class="section-subtitle">Everything you need to become an expert in beautiful aging in place design</p>
+            </div>
+            <div class="curriculum-grid">
+                <div class="curriculum-module">
+                    <div class="module-header">
+                        <div class="module-number">1</div>
+                        <h3>Foundation & Philosophy</h3>
+                    </div>
+                    <ul class="module-topics">
+                        <li>Universal design principles</li>
+                        <li>Beautiful accessibility concepts</li>
+                        <li>Understanding client needs</li>
+                        <li>Market opportunity analysis</li>
+                        <li>Ethics and professionalism</li>
+                    </ul>
+                </div>
+                <div class="curriculum-module">
+                    <div class="module-header">
+                        <div class="module-number">2</div>
+                        <h3>Assessment & Planning</h3>
+                    </div>
+                    <ul class="module-topics">
+                        <li>Home evaluation techniques</li>
+                        <li>Client interview strategies</li>
+                        <li>Creating comprehensive plans</li>
+                        <li>Budgeting and timeline planning</li>
+                        <li>Phased implementation strategies</li>
+                    </ul>
+                </div>
+                <div class="curriculum-module">
+                    <div class="module-header">
+                        <div class="module-number">3</div>
+                        <h3>Design Solutions</h3>
+                    </div>
+                    <ul class="module-topics">
+                        <li>Kitchen modifications</li>
+                        <li>Bathroom safety and style</li>
+                        <li>Lighting design principles</li>
+                        <li>Smart home integration</li>
+                        <li>Material selection</li>
+                    </ul>
+                </div>
+                <div class="curriculum-module">
+                    <div class="module-header">
+                        <div class="module-number">4</div>
+                        <h3>Business Development</h3>
+                    </div>
+                    <ul class="module-topics">
+                        <li>Marketing your services</li>
+                        <li>Pricing strategies</li>
+                        <li>Client relationship management</li>
+                        <li>Project management</li>
+                        <li>Building partnerships</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification Levels -->
+    <section class="levels-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Certification Levels</h2>
+                <p class="section-subtitle">Choose the level that matches your experience and business goals</p>
+            </div>
+            <div class="levels-grid">
+                <div class="level-card">
+                    <div class="level-badge">CS</div>
+                    <h3>Certified Sage</h3>
+                    <div class="level-price">$2,497</div>
+                    <p>Perfect for designers starting their aging in place specialization</p>
+                    <ul class="level-features">
+                        <li>Complete training curriculum</li>
+                        <li>Certification exam</li>
+                        <li>Directory listing</li>
+                        <li>Marketing toolkit</li>
+                        <li>Community access</li>
+                        <li>Annual renewal: $297</li>
+                    </ul>
+                    <button class="btn btn-primary">CHOOSE CERTIFIED SAGE</button>
+                </div>
+                <div class="level-card">
+                    <div class="level-badge">MS</div>
+                    <h3>Master Sage</h3>
+                    <div class="level-price">$3,997</div>
+                    <p>For experienced professionals ready to lead the industry</p>
+                    <ul class="level-features">
+                        <li>Everything in Certified Sage</li>
+                        <li>Advanced case studies</li>
+                        <li>Business coaching sessions</li>
+                        <li>Priority directory placement</li>
+                        <li>Speaking opportunities</li>
+                        <li>Annual renewal: $497</li>
+                    </ul>
+                    <button class="btn btn-primary">CHOOSE MASTER SAGE</button>
+                </div>
+                <div class="level-card">
+                    <div class="level-badge">LS</div>
+                    <h3>Lead Sage</h3>
+                    <div class="level-price">$5,997</div>
+                    <p>Exclusive level for industry leaders and trainers</p>
+                    <ul class="level-features">
+                        <li>Everything in Master Sage</li>
+                        <li>Train-the-trainer certification</li>
+                        <li>Regional partnership rights</li>
+                        <li>Exclusive mastermind group</li>
+                        <li>Co-branding opportunities</li>
+                        <li>Annual renewal: $797</li>
+                    </ul>
+                    <button class="btn btn-primary">CHOOSE LEAD SAGE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section id="application" class="application-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Start Your Application</h2>
+                <p class="section-subtitle">Take the first step toward becoming a certified Sage professional</p>
+            </div>
+            <form id="certification-application" class="application-form">
+                <div class="form-steps">
+                    <div class="step-indicator active">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Personal Info</div>
+                    </div>
+                    <div class="step-indicator">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Experience</div>
+                    </div>
+                    <div class="step-indicator">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Portfolio</div>
+                    </div>
+                    <div class="step-indicator">
+                        <div class="step-circle">4</div>
+                        <div class="step-label">Payment</div>
+                    </div>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+
+                <div id="step-1" class="form-step active">
+                    <h3>Personal Information</h3>
+                    <div class="form-group">
+                        <label for="full-name">Full Name *</label>
+                        <input type="text" id="full-name" name="full-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location (City, State) *</label>
+                        <input type="text" id="location" name="location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="certification-level">Desired Certification Level *</label>
+                        <select id="certification-level" name="certification-level" required>
+                            <option value="">Select a level</option>
+                            <option value="certified-sage">Certified Sage - $2,497</option>
+                            <option value="master-sage">Master Sage - $3,997</option>
+                            <option value="lead-sage">Lead Sage - $5,997</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="step-2" class="form-step">
+                    <h3>Professional Experience</h3>
+                    <div class="form-group">
+                        <label for="profession">Current Profession *</label>
+                        <select id="profession" name="profession" required>
+                            <option value="">Select your profession</option>
+                            <option value="interior-designer">Interior Designer</option>
+                            <option value="architect">Architect</option>
+                            <option value="contractor">Contractor/Builder</option>
+                            <option value="occupational-therapist">Occupational Therapist</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience-years">Years of Experience *</label>
+                        <select id="experience-years" name="experience-years" required>
+                            <option value="">Select experience level</option>
+                            <option value="0-2">0-2 years</option>
+                            <option value="3-5">3-5 years</option>
+                            <option value="6-10">6-10 years</option>
+                            <option value="10+">10+ years</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="current-business">Current Business Status *</label>
+                        <select id="current-business" name="current-business" required>
+                            <option value="">Select your status</option>
+                            <option value="employee">Employee</option>
+                            <option value="business-owner">Business Owner</option>
+                            <option value="freelance">Freelance/Consultant</option>
+                            <option value="student">Student</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="aging-experience">Experience with Aging in Place Projects</label>
+                        <textarea id="aging-experience" name="aging-experience" placeholder="Describe any previous experience with accessibility design, aging in place modifications, or universal design projects..."></textarea>
+                    </div>
+                </div>
+
+                <div id="step-3" class="form-step">
+                    <h3>Portfolio & References</h3>
+                    <div class="form-group">
+                        <label for="portfolio-link">Portfolio Website or Link</label>
+                        <input type="url" id="portfolio-link" name="portfolio-link" placeholder="https://yourportfolio.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="project-examples">Project Examples</label>
+                        <textarea id="project-examples" name="project-examples" placeholder="Describe 2-3 of your best projects, including challenges faced and solutions implemented..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="certifications">Current Certifications & Licenses</label>
+                        <textarea id="certifications" name="certifications" placeholder="List any relevant certifications, licenses, or professional credentials..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="references">Professional References</label>
+                        <textarea id="references" name="references" placeholder="Provide 2-3 professional references with contact information..."></textarea>
+                    </div>
+                </div>
+
+                <div id="step-4" class="form-step">
+                    <h3>Payment & Agreement</h3>
+                    <div class="form-group">
+                        <label for="payment-plan">Payment Plan</label>
+                        <select id="payment-plan" name="payment-plan">
+                            <option value="full">Full Payment (Save 10%)</option>
+                            <option value="2-payments">2-Payment Plan</option>
+                            <option value="monthly">Monthly Payment Plan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="terms" required>
+                            I agree to the Terms of Service and Privacy Policy *
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="code-of-ethics" required>
+                            I agree to abide by the Sage Code of Ethics *
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="newsletter">
+                            I would like to receive updates and educational content from The Sage Blueprint
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-navigation">
+                    <button type="button" onclick="prevStep()" class="btn btn-secondary" style="display: none;">PREVIOUS</button>
+                    <button type="button" onclick="nextStep()" class="btn btn-primary">NEXT STEP</button>
+                    <button type="submit" class="btn btn-primary" style="display: none;">SUBMIT APPLICATION</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Who is eligible to become a certified Sage?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our program is designed for interior designers, architects, contractors, occupational therapists, and other professionals involved in home design and modification. You should have at least basic experience in your field and a passion for helping people age safely and beautifully at home.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How long does the certification process take?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The comprehensive training program typically takes 6-8 weeks to complete, including online modules, live sessions, case study reviews, and the final certification exam. You can work at your own pace, but we recommend completing within 12 weeks for optimal learning retention.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What makes this certification different from CAPS?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While CAPS focuses primarily on safety and accessibility, our certification emphasizes the integration of beautiful design with functional accessibility. We provide a complete business system, marketing support, and ongoing community that goes beyond traditional technical training.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is there ongoing support after certification?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! Certified Sages receive ongoing support including monthly mastermind calls, access to our private community, continuing education opportunities, marketing resources, and priority placement in our client referral directory.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What's the return on investment?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most certified Sages recoup their investment within 3-6 months through higher project values, premium pricing, and increased client demand. Our average certified professional sees a 40% increase in project values and 25% increase in annual revenue within the first year.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="become-sage.html">BECOME A SAGE</a>
+            </div>
+            <p>&copy; 2024 The Sage Blueprint. All rights reserved. Empowering beautiful, safe, independent living.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('span:last-child');
+            
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer').forEach(a => {
+                    a.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-question span:last-child').forEach(i => {
+                    i.textContent = '+';
+                });
+                
+                // Open this FAQ
+                answer.classList.add('active');
+                icon.textContent = '−';
+            }
+        }
+    </script>
+</body>
+</h

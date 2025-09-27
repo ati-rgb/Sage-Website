@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sage Blueprint Book - Your Home for Life, Beautifully Designed</title>
+    <meta name="description" content="The essential aging in place guide by The Sage. Learn how to create beautiful, safe, accessible homes that you'll love forever.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tiempos+Headline:wght@400;500;700&family=Suisse+Int'l:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="resources/favicon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base styles - Updated with SAGE Blueprint Branding */
+        :root {
+            --sage-dark: #2B3210;
+            --sage-medium: #505631;
+            --warm-white: #FFFFFF;
+            --sage-cream: #E5E2D9;
+            --sage-orange: #D4AF37;
+            
+            --font-primary: 'Open Sans', sans-serif;
+            --font-secondary: 'Lato', sans-serif;
+            
+            --border-radius: 12px;
+            --shadow: 0 4px 20px rgba(43, 50, 16, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background-color: var(--warm-white);
+            padding-top: 80px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { 
+            font-size: 2.5rem; 
+            font-weight: 700;
+            color: var(--sage-dark);
+            font-family: var(--font-primary);
+        }
+
+        h2 { 
+            font-size: 2rem; 
+            color: var(--sage-medium);
+            font-family: var(--font-primary);
+            font-weight: 600;
+        }
+
+        h3 { 
+            font-size: 1.5rem; 
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--sage-medium);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(254, 254, 254, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(156, 175, 136, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 400;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--sage-green);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-secondary);
+        }
+
+        .btn-primary {
+            background: var(--sage-orange);
+            color: var(--warm-white);
+        }
+
+        .btn-primary:hover {
+            background: #b8941f;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--sage-medium);
+            border: 2px solid var(--sage-medium);
+        }
+
+        .btn-secondary:hover {
+            background: var(--sage-medium);
+            color: var(--warm-white);
+        }
+
+        /* Page Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Book Hero Section */
+        .book-hero {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--sage-cream) 0%, var(--warm-white) 100%);
+        }
+
+        .book-hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .book-cover {
+            text-align: center;
+        }
+
+        .book-cover img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 40px rgba(44, 44, 44, 0.2);
+        }
+
+        .book-info h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .book-subtitle {
+            font-size: 1.25rem;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .book-description {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .book-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .book-meta {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            opacity: 0.8;
+        }
+
+        /* Book Details Sections */
+        .book-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--warm-beige);
+        }
+
+        .book-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--charcoal);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Chapter Grid */
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .chapter-card {
+            background: var(--warm-white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(44, 44, 44, 0.15);
+        }
+
+        .chapter-number {
+            background: var(--sage-green);
+            color: var(--warm-white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .chapter-card h3 {
+            color: var(--sage-medium);
+            margin-bottom: 1rem;
+        }
+
+        /* Author Section */
+        .author-section {
+            background: var(--soft-cream);
+        }
+
+        .author-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .author-image {
+            text-align: center;
+        }
+
+        .author-image img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: var(--shadow);
+        }
+
+        .author-bio {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .review-card {
+            background: var(--warm-white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--sage-cream);
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            color: var(--sage-dark);
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: var(--sage-medium);
+            font-family: var(--font-secondary);
+        }
+
+        .review-rating {
+            color: var(--sage-orange);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Purchase Options */
+        .purchase-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .purchase-card {
+            background: var(--warm-white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .purchase-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(44, 44, 44, 0.15);
+        }
+
+        .purchase-card.featured {
+            border: 2px solid var(--sage-green);
+            position: relative;
+        }
+
+        .purchase-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--sage-orange);
+            color: var(--warm-white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .purchase-card h3 {
+            color: var(--sage-medium);
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-note {
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .purchase-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .purchase-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--sage-cream);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .purchase-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 16px;
+            height: 16px;
+            background-image: url('resources/checkmark.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .purchase-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 44, 44, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--warm-white);
+            border-radius: var(--border-radius);
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--charcoal);
+        }
+
+        .preview-pages {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .preview-page {
+            text-align: center;
+        }
+
+        .preview-page img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--sage-dark);
+            color: var(--warm-white);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .book-hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .author-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .purchase-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .preview-pages {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><img src="resources/logo.png" alt="The SAGE Blueprint"></a>
+            <ul class="nav-menu">
+                <li><a href="about.html">ABOUT AGING IN PLACE</a></li>
+                <li><a href="about.html#resources">RESOURCES</a></li>
+                <li><a href="book.html" class="active">THE BOOK</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="find-sage.html" class="btn btn-primary">FIND YOUR SAGE</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Book Hero Section -->
+    <section class="book-hero">
+        <div class="container">
+            <div class="book-hero-content">
+                <div class="book-cover">
+                    <img src="resources/book-cover.jpg" alt="The Sage Blueprint Book Cover">
+                </div>
+                <div class="book-info">
+                    <h1>The Sage Blueprint</h1>
+                    <p class="book-subtitle">Your Home for Life, Beautifully Designed</p>
+                    <p class="book-description">The essential aging in place guide that proves accessibility and beauty can coexist. Learn from certified SAGES how to create stunning, safe, functional homes that you'll love forever.</p>
+                    <div class="book-actions">
+                        <button id="book-preview-btn" class="btn btn-secondary">Look Inside</button>
+                        <a href="#purchase" class="btn btn-primary">Buy Now - $29.99</a>
+                        <a href="find-sage.html" class="btn btn-secondary">Find a Sage Designer</a>
+                    </div>
+                    <div class="book-meta">
+                        <span>📖 288 pages</span>
+                        <span>📅 Published 2024</span>
+                        <span>⭐ 4.9/5 (127 reviews)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Inside Section -->
+    <section class="book-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What's Inside</h2>
+                <p class="section-subtitle">Comprehensive guidance for creating beautiful, accessible homes at every stage of life</p>
+            </div>
+            <div class="chapters-grid">
+                <div class="chapter-card">
+                    <div class="chapter-number">1</div>
+                    <h3>The Philosophy of Beautiful Accessibility</h3>
+                    <p>Why aging in place doesn't mean compromising on style. Understanding the principles of universal design and how they enhance everyone's quality of life.</p>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-number">2</div>
+                    <h3>Assessment and Planning</h3>
+                    <p>How to evaluate your current home, identify potential challenges, and create a comprehensive plan for modifications that grow with your needs.</p>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-number">3</div>
+                    <h3>Entryways and Navigation</h3>
+                    <p>Creating welcoming, accessible entrances and ensuring smooth movement throughout your home with beautiful design solutions.</p>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-number">4</div>
+                    <h3>The Heart of the Home: Kitchen Design</h3>
+                    <p>Stunning kitchen modifications that improve functionality without sacrificing style. From varied counter heights to smart storage solutions.</p>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-number">5</div>
+                    <h3>Spa-Inspired Bathroom Safety</h3>
+                    <p>Transform your bathroom into a luxurious retreat with integrated safety features. Curbless showers, elegant grab bars, and comfort-height fixtures.</p>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-number">6</div>
+                    <h3>Lighting for Life</h3>
+                    <p>Comprehensive lighting strategies that enhance safety, beauty, and mood. From task lighting to automated systems that adapt to your needs.</p>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-number">7</div>
+                    <h3>Smart Home Integration</h3>
+                    <p>Technology that enhances independence without overwhelming. Voice control, automated lighting, and safety monitoring that feels seamless.</p>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-number">8</div>
+                    <h3>Working with Professionals</h3>
+                    <p>How to find, evaluate, and collaborate with certified SAGES professionals. Understanding the design process and managing your project.</p>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-number">9</div>
+                    <h3>Budgeting and Financing</h3>
+                    <p>Realistic cost expectations, financing options, and how to prioritize modifications for maximum impact and value.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Section -->
+    <section class="book-section author-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About the Author</h2>
+            </div>
+            <div class="author-content">
+                <div class="author-image">
+                    <img src="resources/headshot.png" alt="Ati Williams, Author of Beautiful Transitions">
+                </div>
+                <div class="author-bio">
+                    <h3>Ati Williams</h3>
+                    <p>Ati Williams is a nationally recognized general contractor, designer, and television personality who has made it her life's work to reimagine what home can mean at every stage of life. As the founder of Honeycomb Design Build, she has led hundreds of residential and commercial projects, blending art and science to deliver spaces that are as functional as they are beautiful.</p>
+                    <p>Audiences first came to know Ati on Netflix's <em>Hack My Home</em>, where she showcased her creative approach to solving complex design challenges with heart and ingenuity. Off-screen, she is celebrated in the building industry as the author of the definitive guide to Universal Design for builders—a resource that has reshaped how professionals across the country think about accessible, future-ready spaces.</p>
+                    <p>Ati's perspective is uniquely informed by her dual expertise in construction and design. As a licensed GC, she understands the technical precision required to execute complex projects. As a designer, she brings an intuitive sense of flow, aesthetics, and human experience. Her work has inspired homeowners, fellow contractors, and design professionals alike to see that aging in place is not about limitation, but about creating homes that are safer, smarter, and more beautiful at every age.</p>
+                    <p>With <em>Beautiful Transitions: A Design Guide for Aging in Place with Style and Grace</em>, Ati invites readers into her philosophy of proactive, graceful design. She shares practical strategies, inspiring stories, and a roadmap for homeowners and professionals to create spaces that grow with us—spaces that celebrate independence, dignity, and joy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="book-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Readers Are Saying</h2>
+                <p class="section-subtitle">Over 120 five-star reviews from homeowners and design professionals</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">"This book completely changed how I think about aging in place. The before-and-after photos are stunning, and the practical advice is invaluable. We're already implementing several of Ati's suggestions in our home."</p>
+                    <div class="review-author">Margaret Chen</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">"As an interior designer, I thought I understood accessibility design. This book opened my eyes to a whole new approach. I've recommended it to all my clients planning for the future."</p>
+                    <div class="review-author">David Rodriguez</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">"Beautiful photography, clear explanations, and practical advice. This isn't just a book about aging - it's about creating a home that works for everyone at every stage of life."</p>
+                    <div class="review-author">Jennifer Walsh</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">"Ati's approach to universal design is revolutionary. This book taught me that accessibility doesn't have to be clinical - it can be absolutely beautiful. My clients love these ideas."</p>
+                    <div class="review-author">Michael Thompson, Architect</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">"The practical tips and real-world examples made this so easy to understand. I feel confident now about making smart choices for my parents' home modifications."</p>
+                    <div class="review-author">Lisa Park</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">"This should be required reading for every homeowner and design professional. Ati's vision of beautiful aging in place is exactly what our industry needs."</p>
+                    <div class="review-author">Robert Kim, Contractor</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Purchase Section -->
+    <section id="purchase" class="book-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get Your Copy Today</h2>
+                <p class="section-subtitle">Choose the format that works best for you</p>
+            </div>
+            <div class="purchase-options">
+                <div class="purchase-card">
+                    <h3>Hardcover</h3>
+                    <div class="price">$29.99</div>
+                    <p class="price-note">Free shipping on orders over $50</p>
+                    <ul class="purchase-features">
+                        <li>✓ Premium hardcover edition</li>
+                        <li>✓ 288 full-color pages</li>
+                        <li>✓ Beautiful photography throughout</li>
+                        <li>✓ Durable, lay-flat binding</li>
+                        <li>✓ Perfect for gifting</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">ORDER HARDCOVER</a>
+                </div>
+                <div class="purchase-card featured">
+                    <h3>Hardcover + Digital</h3>
+                    <div class="price">$39.99</div>
+                    <p class="price-note">Best value - Save 20%</p>
+                    <ul class="purchase-features">
+                        <li>✓ Everything in hardcover edition</li>
+                        <li>✓ Instant digital download</li>
+                        <li>✓ Bonus worksheets and checklists</li>
+                        <li>✓ Video walkthroughs</li>
+                        <li>✓ Access to private community</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">GET BOTH - BEST VALUE</a>
+                </div>
+                <div class="purchase-card">
+                    <h3>Digital Only</h3>
+                    <div class="price">$19.99</div>
+                    <p class="price-note">Instant download</p>
+                    <ul class="purchase-features">
+                        <li>✓ PDF, EPUB, and Kindle formats</li>
+                        <li>✓ Interactive checklists</li>
+                        <li>✓ Bonus video content</li>
+                        <li>✓ Searchable text</li>
+                        <li>✓ Lifetime updates included</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">DOWNLOAD NOW</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Preview Modal -->
+    <div id="book-preview-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>Preview The Sage Blueprint</h2>
+            <p>Get a glimpse of what's inside this comprehensive guide to beautiful aging in place design.</p>
+            <div class="preview-pages">
+                <div class="preview-page">
+                    <h3>Chapter 1: Philosophy</h3>
+                    <img src="resources/sage-portfolio-1.jpg" alt="Chapter 1 Preview">
+                    <p>Understanding why beautiful design and accessibility are not mutually exclusive.</p>
+                </div>
+                <div class="preview-page">
+                    <h3>Chapter 5: Bathrooms</h3>
+                    <img src="resources/sage-portfolio-3.jpg" alt="Chapter 5 Preview">
+                    <p>Creating spa-inspired bathrooms with integrated safety features.</p>
+                </div>
+            </div>
+            <div class="preview-cta">
+                <a href="#purchase" class="btn btn-primary">GET THE COMPLETE BOOK</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="become-sage.html">BECOME A SAGE</a>
+            </div>
+            <p>&copy; 2024 The Sage Blueprint. All rights reserved. Empowering beautiful, safe, independent living.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+</body>
+</htm

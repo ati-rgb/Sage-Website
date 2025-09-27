@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sage Blueprint Store - Books and Resources</title>
+    <meta name="description" content="Purchase The Sage Blueprint book and access exclusive resources for beautiful aging in place design.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tiempos+Headline:wght@400;500;700&family=Suisse+Int'l:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="resources/favicon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base styles - Updated with SAGE Blueprint Branding */
+        :root {
+            --sage-dark: #2B3210;
+            --sage-medium: #505631;
+            --warm-white: #FFFFFF;
+            --sage-cream: #E5E2D9;
+            --sage-orange: #D4AF37;
+            
+            --font-primary: 'Open Sans', sans-serif;
+            --font-secondary: 'Lato', sans-serif;
+            
+            --border-radius: 12px;
+            --shadow: 0 4px 20px rgba(43, 50, 16, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background-color: var(--warm-white);
+            padding-top: 80px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { 
+            font-size: 2.5rem; 
+            font-weight: 700;
+            color: var(--sage-green);
+        }
+
+        h2 { 
+            font-size: 2rem; 
+            color: var(--charcoal);
+        }
+
+        h3 { 
+            font-size: 1.5rem; 
+            font-family: var(--font-secondary);
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(254, 254, 254, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(156, 175, 136, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 400;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--sage-green);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-secondary);
+        }
+
+        .btn-primary {
+            background: var(--sage-green);
+            color: var(--warm-white);
+        }
+
+        .btn-primary:hover {
+            background: #7a9268;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--sage-green);
+            border: 2px solid var(--sage-green);
+        }
+
+        .btn-secondary:hover {
+            background: var(--sage-green);
+            color: var(--warm-white);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, var(--warm-white) 100%);
+            text-align: center;
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem;
+            color: var(--charcoal);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Store Layout */
+        .store-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            padding: 3rem 0;
+        }
+
+        .products-section {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .product-card {
+            background: var(--warm-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(44, 44, 44, 0.15);
+        }
+
+        .product-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .product-image {
+            text-align: center;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .product-info h3 {
+            color: var(--sage-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-subtitle {
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--sage-green);
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .product-features li {
+            padding: 0.25rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--sage-green);
+            font-weight: bold;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .product-options {
+            padding: 1.5rem 2rem;
+            background: var(--soft-cream);
+            border-top: 1px solid var(--warm-beige);
+        }
+
+        .option-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .option-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .option-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--warm-beige);
+            border-radius: var(--border-radius);
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+        }
+
+        /* Shopping Cart Sidebar */
+        .cart-sidebar {
+            background: var(--warm-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .cart-title {
+            color: var(--sage-green);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .cart-items {
+            margin-bottom: 2rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--warm-beige);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-price {
+            color: var(--sage-green);
+            font-weight: 500;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: var(--charcoal);
+            opacity: 0.6;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .cart-summary {
+            border-top: 2px solid var(--warm-beige);
+            padding-top: 1.5rem;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        .cart-total-amount {
+            color: var(--sage-green);
+            font-weight: 700;
+        }
+
+        .cart-empty {
+            text-align: center;
+            color: var(--charcoal);
+            opacity: 0.6;
+            padding: 2rem 0;
+        }
+
+        /* Related Products */
+        .related-section {
+            padding: 3rem 0;
+            background: var(--soft-cream);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .related-card {
+            background: var(--warm-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .related-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(44, 44, 44, 0.15);
+        }
+
+        .related-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+        }
+
+        .related-card h3 {
+            color: var(--sage-medium);
+            margin-bottom: 0.5rem;
+        }
+
+        .related-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--sage-orange);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--sage-dark);
+            color: var(--warm-white);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .store-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .product-header {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .product-actions {
+                justify-content: center;
+            }
+            
+            .cart-sidebar {
+                position: static;
+            }
+            
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><img src="resources/logo.png" alt="The SAGE Blueprint"></a>
+            <ul class="nav-menu">
+                <li><a href="about.html">ABOUT AGING IN PLACE</a></li>
+                <li><a href="about.html#resources">RESOURCES</a></li>
+                <li><a href="book.html">THE BOOK</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="find-sage.html" class="btn btn-primary">FIND YOUR SAGE</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>The Sage Blueprint Store</h1>
+            <p class="page-subtitle">Essential resources for beautiful aging in place design and professional development</p>
+        </div>
+    </section>
+
+    <!-- Store Content -->
+    <div class="container">
+        <div class="store-container">
+            <!-- Products Section -->
+            <div class="products-section">
+                <!-- Main Product - The Book -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-image">
+                            <img src="resources/book-cover.jpg" alt="The Sage Blueprint Book">
+                        </div>
+                        <div class="product-info">
+                            <h3>The Sage Blueprint</h3>
+                            <p class="product-subtitle">Your Home for Life, Beautifully Designed</p>
+                            <div class="product-price">$29.99</div>
+                            <p class="product-description">The essential guide to creating beautiful, accessible homes that support aging in place with style and dignity. Includes practical advice, stunning photography, and expert insights.</p>
+                            <ul class="product-features">
+                                <li>288 pages of comprehensive guidance</li>
+                                <li>Beautiful full-color photography</li>
+                                <li>Room-by-room design solutions</li>
+                                <li>Professional insights and case studies</li>
+                                <li>Practical checklists and worksheets</li>
+                            </ul>
+                            <div class="product-actions">
+                                <button class="btn btn-primary" onclick="addToCart('book-hardcover')">ADD TO CART</button>
+                                <button class="btn btn-secondary" onclick="previewBook()">PREVIEW</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-options">
+                        <div class="option-group">
+                            <label for="book-format">Format:</label>
+                            <select id="book-format" onchange="updatePrice()">
+                                <option value="hardcover">Hardcover - $29.99</option>
+                                <option value="digital">Digital Download - $19.99</option>
+                                <option value="bundle">Book + Digital - $39.99</option>
+                            </select>
+                        </div>
+                        <div class="option-group">
+                            <label for="book-quantity">Quantity:</label>
+                            <select id="book-quantity" onchange="updatePrice()">
+                                <option value="1">1 copy</option>
+                                <option value="2">2 copies - Save 10%</option>
+                                <option value="5">5 copies - Save 20%</option>
+                                <option value="10">10+ copies - Contact us</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bonus Resources -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-image">
+                            <img src="resources/sage-portfolio-1.jpg" alt="Design Templates">
+                        </div>
+                        <div class="product-info">
+                            <h3>Design Templates & Worksheets</h3>
+                            <p class="product-subtitle">Professional tools for aging in place projects</p>
+                            <div class="product-price">$49.99</div>
+                            <p class="product-description">Comprehensive collection of design templates, assessment worksheets, and project planning tools used by certified Sages.</p>
+                            <ul class="product-features">
+                                <li>Home assessment checklists</li>
+                                <li>Design specification templates</li>
+                                <li>Client consultation forms</li>
+                                <li>Project timeline planners</li>
+                                <li>Budget calculation tools</li>
+                            </ul>
+                            <div class="product-actions">
+                                <button class="btn btn-primary" onclick="addToCart('templates')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Online Course -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-image">
+                            <img src="resources/sage-portfolio-2.jpg" alt="Online Course">
+                        </div>
+                        <div class="product-info">
+                            <h3>Beautiful Aging in Place Course</h3>
+                            <p class="product-subtitle">Video masterclass for homeowners</p>
+                            <div class="product-price">$149.99</div>
+                            <p class="product-description">Learn directly from certified Sages through comprehensive video lessons covering all aspects of aging in place design.</p>
+                            <ul class="product-features">
+                                <li>12 comprehensive video modules</li>
+                                <li>Downloadable resources and guides</li>
+                                <li>Interactive design exercises</li>
+                                <li>Lifetime access to content</li>
+                                <li>30-day money-back guarantee</li>
+                            </ul>
+                            <div class="product-actions">
+                                <button class="btn btn-primary" onclick="addToCart('course')">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shopping Cart Sidebar -->
+            <div class="cart-sidebar">
+                <h3 class="cart-title">Shopping Cart</h3>
+                <div id="cart-items" class="cart-items">
+                    <div class="cart-empty">
+                        Your cart is empty
+                    </div>
+                </div>
+                <div class="cart-summary">
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <span class="cart-total-amount">$0.00</span>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="checkout()">CHECKOUT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Products -->
+    <section class="related-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">You Might Also Like</h2>
+            </div>
+            <div class="related-grid">
+                <div class="related-card">
+                    <img src="resources/bathroom-design.jpg" alt="Bathroom Design Guide">
+                    <h3>Bathroom Design Guide</h3>
+                    <p>Specialized guide for creating spa-inspired accessible bathrooms</p>
+                    <div class="related-price">$19.99</div>
+                    <button class="btn btn-secondary" onclick="addToCart('bathroom-guide')">ADD TO CART</button>
+                </div>
+                <div class="related-card">
+                    <img src="resources/kitchen-design.jpg" alt="Kitchen Design Guide">
+                    <h3>Kitchen Design Guide</h3>
+                    <p>Complete guide to beautiful, functional kitchen modifications</p>
+                    <div class="related-price">$19.99</div>
+                    <button class="btn btn-secondary" onclick="addToCart('kitchen-guide')">ADD TO CART</button>
+                </div>
+                <div class="related-card">
+                    <img src="resources/bedroom-design.jpg" alt="Lighting Design Guide">
+                    <h3>Lighting Design Guide</h3>
+                    <p>Master the art of beautiful, functional lighting for aging eyes</p>
+                    <div class="related-price">$14.99</div>
+                    <button class="btn btn-secondary" onclick="addToCart('lighting-guide')">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="become-sage.html">BECOME A SAGE</a>
+            </div>
+            <p>&copy; 2024 The Sage Blueprint. All rights reserved. Empowering beautiful, safe, independent living.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+    <script>
+        let cart = [];
+        
+        function addToCart(productId) {
+            const products = {
+                'book-hardcover': {
+                    id: 'book-hardcover',
+                    title: 'The Sage Blueprint (Hardcover)',
+                    price: 29.99,
+                    image: 'resources/book-cover.jpg'
+                },
+                'templates': {
+                    id: 'templates',
+                    title: 'Design Templates & Worksheets',
+                    price: 49.99,
+                    image: 'resources/sage-portfolio-1.jpg'
+                },
+                'course': {
+                    id: 'course',
+                    title: 'Beautiful Aging in Place Course',
+                    price: 149.99,
+                    image: 'resources/sage-portfolio-2.jpg'
+                },
+                'bathroom-guide': {
+                    id: 'bathroom-guide',
+                    title: 'Bathroom Design Guide',
+                    price: 19.99,
+                    image: 'resources/bathroom-design.jpg'
+                },
+                'kitchen-guide': {
+                    id: 'kitchen-guide',
+                    title: 'Kitchen Design Guide',
+                    price: 19.99,
+                    image: 'resources/kitchen-design.jpg'
+                },
+                'lighting-guide': {
+                    id: 'lighting-guide',
+                    title: 'Lighting Design Guide',
+                    price: 14.99,
+                    image: 'resources/bedroom-design.jpg'
+                }
+            };
+            
+            const product = products[productId];
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({...product, quantity: 1});
+            }
+            
+            updateCartDisplay();
+            showSuccessMessage('Item added to cart!');
+        }
+        
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartDisplay();
+        }
+        
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.querySelector('.cart-total-amount');
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
+                cartTotalElement.textContent = '$0.00';
+                return;
+            }
+            
+            let total = 0;
+            let cartHTML = '';
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                cartHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <img src="${item.image}" alt="${item.title}">
+                        </div>
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.title}</div>
+                            <div class="cart-item-price">$${item.price.toFixed(2)} × ${item.quantity}</div>
+                        </div>
+                        <button class="cart-item-remove" onclick="removeFromCart('${item.id}')">×</button>
+                    </div>
+                `;
+            });
+            
+            cartItemsContainer.innerHTML = cartHTML;
+            cartTotalElement.textContent = `$${total.toFixed(2)}`;
+        }
+        
+        function updatePrice() {
+            // This would update pricing based on selected options
+            console.log('Price updated based on selections');
+        }
+        
+        function previewBook() {
+            alert('Book preview would open here, showing sample pages and content.');
+        }
+        
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            alert('Checkout process would begin here, collecting shipping and payment information.');
+        }
+    </script>
+</body>
+</html>
